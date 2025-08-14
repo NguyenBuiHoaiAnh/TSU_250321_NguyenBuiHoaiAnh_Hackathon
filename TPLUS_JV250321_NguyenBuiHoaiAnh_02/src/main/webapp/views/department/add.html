@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Department</title>
+</head>
+<body>
+<h1>Add Department</h1>
+<form th:action="@{/add}" th:object="${department}" th:method="post">
+    <label>Name</label><br>
+    <input type="text" th:field="*{name}"><br>
+    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+
+    <label>Description</label><br>
+    <input type="text" th:field="*{description}"><br>
+    <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+
+    <label>Name</label><br>
+    <input type="radio" th:field="*{status}" value="1">Active
+    <input type="radio" th:field="*{status}" value="0">Deactive
+
+    <input type="submit" value="Add">
+    <input type="reset" value="Clear">
+
+</form>
+</body>
+</html>

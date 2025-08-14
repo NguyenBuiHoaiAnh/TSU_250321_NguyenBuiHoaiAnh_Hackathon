@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Department List</title>
+</head>
+<body>
+<h1>Department List</h1>
+<a th:href="@{department/add}">Add Department</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Descripton</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="d:${departmentList}">
+        <td th:text="${d.id}"></td>
+        <td th:text="${d.name}"></td>
+        <td th:text="${d.description}"></td>
+        <td th:text="${d.status?'Active':'Deactive'}"></td>
+        <td>
+            <a th:href="@{/department/update/{id}(id=${d.id})}">Update</a>
+            <a th:href="@{/department/delete/{id}(id=${d.id})}"
+            onclick="return confirm('Bạn có xác nhận xóa không')">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
